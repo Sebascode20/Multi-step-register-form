@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <link
+      rel="icon"
+      href="./resources/favicon.ico"
+      type="image/x-icon"
+      sizes="96x96"
+    />
+
+    <title>Multi-step Register Form | devChallenges.io</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/fonts.css" />
+  </head>
+  <body>
+    <main>
+      <form class="register">
+        <legend class="register__title">Register</legend>
+        <div class="register__name">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            title="The name field only accepts letters and spaces"
+            pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+        <div class="register__email">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            title="Invalid email address"
+            pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9\-]+(\.[a-z0-9\-]+)*(\.[a-z]{2,15})$"
+            placeholder="Example@gmail.com"
+            required
+          />
+        </div>
+
+        <input class="register__btn"  id="register-btn" type="button" value="Continue" />
+      </form>
+      <div class="step-container">
+        <p class="step-text">Step 1 of 3</p>
+        <nav class="step-indicator">
+          <ol>
+            <li class="step active"></li>
+            <li class="step"></li>
+            <li class="step"></li>
+          </ol>
+        </nav>
+      </div>
+      <form class="topics">
+        <legend class="topics__title">
+          Which topics you are interested in?
+        </legend>
+        <input type="checkbox" name="software-development" id="software" />
+        <label for="software">Software Development</label>
+        <input type="checkbox" name="user-experience" id="ux" />
+        <label for="ux">User Experience</label>
+        <input type="checkbox" name="graphic-design" id="graphic" />
+        <label for="graphic">Graphic Design</label>
+        <input class="topics__btn" id="topics-btn" type="button" value="Continue" />
+      </form>
+      <div class="step-container">
+        <p class="step-text">Step 2 of 3</p>
+        <nav class="step-indicator">
+          <ol>
+            <li class="step"></li>
+            <li class="step"></li>
+            <li class="step"></li>
+          </ol>
+        </nav>
+      </div>
+      <article class="summary">
+        <h2 class="summary__title">Summary</h2>
+        <p><span class="name">Name: </span>Emily Johnson</p>
+        <p><span class="email">Email: </span>emily@emilyjohnsonstl.com</p>
+        <h3>Topics:</h3>
+        <ul>
+          <li>User Experience</li>
+          <li>Graphic Design</li>
+        </ul>
+        <button class="summary__btn" id="btn-confirm" type="submit">Confirm</button>
+      </article>
+      <div class="step-container">
+        <p class="step-text">Step 3 of 3</p>
+        <nav class="step-indicator">
+          <ol>
+            <li class="step"></li>
+            <li class="step"></li>
+            <li class="step"></li>
+          </ol>
+        </nav>
+      </div>
+    </main>
+    <footer class="author-info">
+      Coded by <a href="#">Sebastian Aguiñada</a> | Challenge by
+      <a href="https://www.devchallenges.io?ref=challenge" target="_blank"
+        >devChallenges.io</a
+      >.
+    </footer>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
