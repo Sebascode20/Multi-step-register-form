@@ -9,6 +9,8 @@
   --outline-color: #a1a1a9;
   --input-border-color: #4d5562;
   --circle-shadow-color: #845eee4d;
+  --form-ok-color: #4caf50;
+  --form-error-color: #f44336;
 }
 
 * {
@@ -20,12 +22,17 @@
 body {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 1rem;
   min-height: 100vh;
   font-family: var(--main-font);
   background-color: var(--body-bg-color);
 }
+
+/*main {
+  flex: 1;
+}*/
 
 .author-info {
   font-size: 14px;
@@ -38,11 +45,21 @@ body {
   text-decoration: none;
 }
 
+/* ********** STYLES FORM VALIDATIONS ********** */
+.card [required]:valid {
+  border: thin solid var(--form-ok-color);
+}
+
+.card [required]:invalid {
+  border: thin solid var(--form-error-color);
+}
+
 /* ********** REGISTER FORM ********** */
 .register,
 .topics,
 .summary {
-  max-width: 400px;
+  display: none;
+  max-width: 350px;
   padding: 2rem 1.5rem;
   border-radius: 15px;
   color: var(--form-text-color);
@@ -77,7 +94,7 @@ body {
   display: block;
   padding: 1rem;
   max-width: 350px;
-  width: 400px;
+  width: 300px;
   background-color: var(--form-bg-color);
   border: 1px solid #4d5562;
   outline-width: 1px;
@@ -113,18 +130,35 @@ body {
   list-style: none;
 }
 
+.is-active {
+  display: block;
+}
+
 .active {
   background-color: var(--circle-primary-color);
   box-shadow: 0 0 1px 5px var(--circle-shadow-color);
 }
 
 .step-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  display: none;
   margin-top: 1rem;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.step-container.available,
+.form-active {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+.step-container.available {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   gap: 30px;
+  text-align: center;
 }
 
 .step-indicator .step {

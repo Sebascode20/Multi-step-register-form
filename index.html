@@ -18,7 +18,7 @@
   </head>
   <body>
     <main>
-      <form class="register">
+      <form class="card form-active register">
         <legend class="register__title">Register</legend>
         <div class="register__name">
           <label for="name">Name</label>
@@ -45,9 +45,14 @@
           />
         </div>
 
-        <input class="register__btn"  id="register-btn" type="button" value="Continue" />
+        <input
+          class="register__btn"
+          id="register-btn"
+          type="button"
+          value="Continue"
+        />
       </form>
-      <div class="step-container">
+      <div class="available step-container">
         <p class="step-text">Step 1 of 3</p>
         <nav class="step-indicator">
           <ol>
@@ -57,7 +62,7 @@
           </ol>
         </nav>
       </div>
-      <form class="topics">
+      <form class="card topics">
         <legend class="topics__title">
           Which topics you are interested in?
         </legend>
@@ -67,7 +72,12 @@
         <label for="ux">User Experience</label>
         <input type="checkbox" name="graphic-design" id="graphic" />
         <label for="graphic">Graphic Design</label>
-        <input class="topics__btn" id="topics-btn" type="button" value="Continue" />
+        <input
+          class="topics__btn"
+          id="topics-btn"
+          type="button"
+          value="Continue"
+        />
       </form>
       <div class="step-container">
         <p class="step-text">Step 2 of 3</p>
@@ -79,7 +89,7 @@
           </ol>
         </nav>
       </div>
-      <article class="summary">
+      <article class="card summary">
         <h2 class="summary__title">Summary</h2>
         <p><span class="name">Name: </span>Emily Johnson</p>
         <p><span class="email">Email: </span>emily@emilyjohnsonstl.com</p>
@@ -88,7 +98,9 @@
           <li>User Experience</li>
           <li>Graphic Design</li>
         </ul>
-        <button class="summary__btn" id="btn-confirm" type="submit">Confirm</button>
+        <button class="summary__btn" id="btn-confirm" type="submit">
+          Confirm
+        </button>
       </article>
       <div class="step-container">
         <p class="step-text">Step 3 of 3</p>
