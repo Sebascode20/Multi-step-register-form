@@ -46,11 +46,11 @@ body {
 }
 
 /* ********** STYLES FORM VALIDATIONS ********** */
-.card [required]:valid {
+.card [required]:not(:placeholder-shown):valid {
   border: thin solid var(--form-ok-color);
 }
 
-.card [required]:invalid {
+.card [required]:not(:placeholder-shown):invalid {
   border: thin solid var(--form-error-color);
 }
 

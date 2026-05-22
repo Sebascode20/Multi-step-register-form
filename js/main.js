@@ -3,10 +3,12 @@ const d = document;
 const $continueBtnRegister = d.getElementById("register-btn"),
   $continueBtnTopics = d.getElementById("topics-btn"),
   $confirmBtnSummary = d.getElementById("btn-confirm"),
-  $forms = d.querySelectorAll(".card");
+  $forms = d.querySelectorAll(".card"),
+  $steps = d.querySelectorAll(".step-container");
 
 d.addEventListener("DOMContentLoaded", (e) => {
   nextStep();
+  //showInfo();
 });
 
 const formValidations = () => {
@@ -54,6 +56,11 @@ const nextStep = () => {
     if (e.target === $continueBtnRegister || e.target === $continueBtnTopics) {
       if (formValidations()) {
         $forms[i].classList.remove("form-active");
+        $steps[i].classList.remove("available");
+        $steps[i]
+          .closest("div")
+          .children[1].children[0].children[i].classList.remove("active");
+
         i++;
 
         if (i >= $forms.length) {
@@ -61,7 +68,20 @@ const nextStep = () => {
         }
 
         $forms[i].classList.add("form-active");
+        $steps[i].classList.add("available");
+        $steps[i]
+          .closest("div")
+          .children[1].children[0].children[i].classList.add("active");
       }
     }
+  });
+};
+
+const showInfo = () => {
+  const $inputs = d.querySelectorAll(".card [required]");
+
+  $inputs.forEach((input) => {
+    $name.textContent = input.value;
+    $email.textContent = input.value;
   });
 };
