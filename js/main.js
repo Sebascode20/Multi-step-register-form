@@ -4,11 +4,21 @@ const $continueBtnRegister = d.getElementById("register-btn"),
   $continueBtnTopics = d.getElementById("topics-btn"),
   $confirmBtnSummary = d.getElementById("btn-confirm"),
   $forms = d.querySelectorAll(".card"),
-  $steps = d.querySelectorAll(".step-container");
+  $steps = d.querySelectorAll(".step-container"),
+  $inputName = d.querySelector('[name="name"]'),
+  $inputEmail = d.querySelector('[name="email"]'),
+  $name = d.getElementById("summary__name"),
+  $email = d.getElementById("summary__email"),
+  $options = d.querySelectorAll("input[type='checkbox']"),
+  $topics = d.getElementById("topics"),
+  $btnConfirm = d.getElementById("btn-confirm"),
+  selectedOptions = [];
+
+let inputNameValue = "",
+  inputEmailValue = "";
 
 d.addEventListener("DOMContentLoaded", (e) => {
   nextStep();
-  //showInfo();
 });
 
 const formValidations = () => {
@@ -34,7 +44,7 @@ const formValidations = () => {
     }
   });
 
-  // Validación de checkboxes: al menos uno marcado
+  // Se valida que al menos un checkbox este marcado
   if ($activeForm) {
     const $checkboxes = $activeForm.querySelectorAll("input[type='checkbox']");
 
@@ -55,6 +65,24 @@ const nextStep = () => {
   d.addEventListener("click", (e) => {
     if (e.target === $continueBtnRegister || e.target === $continueBtnTopics) {
       if (formValidations()) {
+        inputNameValue = $inputName.value.trim();
+        inputEmailValue = $inputEmail.value.trim();
+
+        $name.innerHTML = `<p id="summary__name"><span class="name">Name: </span>${inputNameValue}</p>`;
+        $email.innerHTML = `<p id="summary__email"><span class="email">Email: </span>${inputEmailValue}</p>`;
+
+        $options.forEach((checkbox) => {
+          // Se detecta que opción ha sido seleccionada
+          if (checkbox.checked) selectedOptions.push(checkbox.value);
+        });
+
+        // Se recorre el arreglo que contiene las opciones seleccionadas
+        selectedOptions.forEach((el) => {
+          const $li = document.createElement("li");
+          $li.textContent = el;
+          $topics.appendChild($li);
+        });
+
         $forms[i].classList.remove("form-active");
         $steps[i].classList.remove("available");
         $steps[i]
@@ -62,10 +90,6 @@ const nextStep = () => {
           .children[1].children[0].children[i].classList.remove("active");
 
         i++;
-
-        if (i >= $forms.length) {
-          i = 0;
-        }
 
         $forms[i].classList.add("form-active");
         $steps[i].classList.add("available");
@@ -77,11 +101,4 @@ const nextStep = () => {
   });
 };
 
-const showInfo = () => {
-  const $inputs = d.querySelectorAll(".card [required]");
-
-  $inputs.forEach((input) => {
-    $name.textContent = input.value;
-    $email.textContent = input.value;
-  });
-};
+$btnConfirm.addEventListener("click", (e) => alert("🎉 Success"));

@@ -30,9 +30,14 @@ body {
   background-color: var(--body-bg-color);
 }
 
-/*main {
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   flex: 1;
-}*/
+}
 
 .author-info {
   font-size: 14px;
@@ -43,6 +48,11 @@ body {
 
 .author-info a {
   text-decoration: none;
+  color: var(--btn-bg-color);
+}
+
+.author-info a:visited {
+  color: var(--form-text-color);
 }
 
 /* ********** STYLES FORM VALIDATIONS ********** */
@@ -59,9 +69,10 @@ body {
 .topics,
 .summary {
   display: none;
-  max-width: 350px;
+  max-width: 310px;
+  width: 100%;
   padding: 2rem 1.5rem;
-  border-radius: 15px;
+  border-radius: 10px;
   color: var(--form-text-color);
   background-color: var(--form-bg-color);
   /*background: linear-gradient(
@@ -93,8 +104,8 @@ body {
 .summary .summary__btn {
   display: block;
   padding: 1rem;
-  max-width: 350px;
-  width: 300px;
+  max-width: 400px;
+  width: 100%;
   background-color: var(--form-bg-color);
   border: 1px solid #4d5562;
   outline-width: 1px;
@@ -228,4 +239,13 @@ body {
 .email,
 .summary h3 {
   color: var(--outline-color);
+}
+
+@media screen and (min-width: 43.75rem) {
+  .register,
+  .topics,
+  .summary {
+    max-width: 450px;
+    width: 100%;
+  }
 }
