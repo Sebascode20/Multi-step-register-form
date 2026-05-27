@@ -55,6 +55,14 @@ main {
   color: var(--form-text-color);
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px var(--form-bg-color) inset !important;
+  -webkit-text-fill-color: var(--form-text-color) !important;
+}
+
 /* ********** STYLES FORM VALIDATIONS ********** */
 .card [required]:not(:placeholder-shown):valid {
   border: thin solid var(--form-ok-color);
@@ -65,21 +73,55 @@ main {
 }
 
 /* ********** REGISTER FORM ********** */
+.form-wrapper {
+  position: relative;
+  max-width: 310px;
+  width: 100%;
+}
+
+.form-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 44px;
+  left: 26px;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  box-shadow: 0 0 100px 70px rgba(120, 80, 200, 0.6);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .register,
 .topics,
 .summary {
   display: none;
-  max-width: 310px;
-  width: 100%;
+  position: relative;
   padding: 2rem 1.5rem;
   border-radius: 10px;
   color: var(--form-text-color);
   background-color: var(--form-bg-color);
-  /*background: linear-gradient(
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+.register::before,
+.topics::before,
+.summary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  margin: -1px;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
     120deg,
     rgba(229, 231, 235, 0.5) 0.05%,
     rgba(229, 231, 235, 0) 25.05%
-  );*/
+  );
 }
 
 .register__name,
@@ -242,10 +284,20 @@ main {
 }
 
 @media screen and (min-width: 43.75rem) {
-  .register,
-  .topics,
-  .summary {
+  .form-wrapper {
     max-width: 450px;
     width: 100%;
+  }
+}
+
+@media screen and (min-width: 64rem) {
+  .topics__btn,
+  .register__btn,
+  .summary__btn {
+    cursor: pointer;
+  }
+
+  .topics label {
+    cursor: pointer;
   }
 }
